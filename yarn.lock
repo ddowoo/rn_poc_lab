@@ -3422,6 +3422,11 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
+ffmpeg-kit-react-native@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ffmpeg-kit-react-native/-/ffmpeg-kit-react-native-6.0.2.tgz#9eeac96ad89367c99480bd90431391405d4eb73e"
+  integrity sha512-r9uSmahq8TeyIb7fXf3ft+uUXyoeWRFa99+khjo0TAzWO9y0z9wU7eGnab9JLw1MmCB9v64o4yojNluJhVm9nQ==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
@@ -5562,6 +5567,11 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-sound-player@^0.14.3:
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.14.3.tgz#cc45bc515531e06b3c4f931d5cb3a6afcc591c26"
+  integrity sha512-I5VeG8YuwTTMX6CPkZfNL6lWay6GmR3HzuxXjhhpUKHV5K2XWXKJ+YKJAz6dBnJoNshl4EQOo4ox8bQD6/+zPA==
 
 react-native@0.76.5:
   version "0.76.5"

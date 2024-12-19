@@ -1,10 +1,7 @@
-import {View} from 'react-native';
+import AsmrMixScreen from './src/screens/asmpMix';
 
 const App = () => {
-  return (
-    <View
-      style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}></View>
-  );
+  return <AsmrMixScreen />;
 };
 
 export default App;

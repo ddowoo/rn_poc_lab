@@ -10,8 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "ffmpeg-kit-react-native": "^6.0.2",
     "react": "18.3.1",
     "react-native": "0.76.5",
+    "react-native-sound-player": "^0.14.3",
     "rive-react-native": "^8.3.0"
   },
   "devDependencies": {

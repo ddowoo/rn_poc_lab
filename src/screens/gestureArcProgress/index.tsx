@@ -37,6 +37,10 @@ const GestureArcSlider = () => {
 
   path.close(); // 경로 닫기
 
+  if (skiaBackgroundPath === null) {
+    return <></>;
+  }
+
   return (
     <View style={{flex: 1}}>
       <Canvas style={{flex: 1, backgroundColor: 'yellow'}}>

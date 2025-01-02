@@ -1,7 +1,12 @@
-import GestureArcProgress from './src/screens/gestureArcProgress';
+import VictoryChart from './src/screens/victoryChart';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const App = () => {
-  return <GestureArcProgress />;
+  return (
+    <GestureHandlerRootView>
+      <VictoryChart />
+    </GestureHandlerRootView>
+  );
 };
 
 export default App;

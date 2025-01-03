@@ -1,10 +1,10 @@
-import VictoryChart from './src/screens/victoryChart';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import RiveScreen from './src/screens/rive';
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <VictoryChart />
+      <RiveScreen />
     </GestureHandlerRootView>
   );
 };

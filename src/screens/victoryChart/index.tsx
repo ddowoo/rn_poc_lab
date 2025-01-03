@@ -1,11 +1,19 @@
 import {Text, View} from 'react-native';
-import {Area, Bar, CartesianChart, Line, Scatter} from 'victory-native';
+import {
+  Area,
+  Bar,
+  CartesianChart,
+  Line,
+  Scatter,
+  useChartPressState,
+} from 'victory-native';
 import {
   DashPathEffect,
   LinearGradient,
   useFont,
   vec,
 } from '@shopify/react-native-skia';
+import ToolTip from './components/tooltip.tsx';
 
 // x축에 사용할 요일 리스트
 const dayList = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
@@ -19,6 +27,8 @@ const DATA = [0, 1, 2, 3, 4, 5, 6].map((day, index) => ({
 
 const VictoryChart = () => {
   const fontSize = 12;
+  // 사용자의 차트 클릭 상태 관리 (x 좌표와 y값을 포함)
+  const {state, isActive} = useChartPressState({x: 0, y: {highTmp: 0}});
 
   // 커스텀 폰트 로드
   const font = useFont(
@@ -48,6 +58,7 @@ const VictoryChart = () => {
           domain={{y: [-5, 20]}} // 전체 y축 범위
           viewport={{y: [0, 20]}} // 화면에 보이는 y축 범위
           padding={16}
+          chartPressState={state}
           domainPadding={{left: 10, right: 10, top: 10, bottom: 10}}
           xAxis={{
             font,
@@ -67,8 +78,26 @@ const VictoryChart = () => {
             // y값이 0이 아닌 데이터만 필터링
             const updateData = points.value.filter(data => data.yValue !== 0);
 
+            // 클릭된 X 좌표와 가장 가까운 데이터 포인트 찾기
+            const clickedPoint = points.value.find(
+              point =>
+                Math.abs(state.x.position.value - point.x) <
+                (points.value[1]?.x - points.value[0]?.x) / 2, // x 간격의 절반 이내
+            );
+
+            // 클릭된 포인트가 존재하면 툴팁 정보 설정
+            const clickPositionY = clickedPoint?.y ?? 0; // y 좌표
+            const clickValue = clickedPoint?.yValue?.toString() ?? ''; // y 값 텍스트
+
             return (
               <>
+                {isActive ? (
+                  <ToolTip
+                    x={state.x.position}
+                    y={clickPositionY}
+                    value={clickValue}
+                  />
+                ) : null}
                 {/* 점선 그래프 */}
                 <Line
                   connectMissingData={false}

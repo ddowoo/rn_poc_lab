@@ -1,11 +1,10 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import SkiaShader from './src/screens/SkiaShader';
+import SkiaCard from './src/screens/skia/SkiaCard';
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-
-      <SkiaShader />
+      <SkiaCard />
     </GestureHandlerRootView>
   );
 };

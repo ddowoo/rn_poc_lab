@@ -1,10 +1,10 @@
-import VictoryChart from './src/screens/victoryChart';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import GestureGrid from './src/screens/gestureGrid';
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <VictoryChart />
+      <GestureGrid />
     </GestureHandlerRootView>
   );
 };

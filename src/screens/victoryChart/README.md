@@ -67,6 +67,8 @@ React Native에서 `victory-native`와 `@shopify/react-native-skia`를 사용해
 
 
 ## 주요 내용
+=======
+## 주요 학습 내용
 - **데이터 처리**:
     - 0 또는 누락된 데이터를 필터링하고 시각화.
 - **그래디언트**:
@@ -75,6 +77,7 @@ React Native에서 `victory-native`와 `@shopify/react-native-skia`를 사용해
     - `DashPathEffect`, `useFont`, `LinearGradient` 활용.
 - **useChartPressState**
   - 유저 터치에 따른 상태값 변화와, 유저의 터치 위치 값 받기
+
 
 
 ---

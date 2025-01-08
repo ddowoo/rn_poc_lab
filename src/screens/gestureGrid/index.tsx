@@ -11,14 +11,17 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
+import {MOUNTAIN_GRID} from './constants/mountain.ts';
 
 const {width} = Dimensions.get('window');
 
-const GRID = Array.from({length: 5}, () => Array(5).fill('lightGray'));
-const BOX_WIDTH = width / 5;
+const BOX_WIDTH = width / MOUNTAIN_GRID[0].length;
+const EMPTY_COLOR_GRID = MOUNTAIN_GRID.map(boxList =>
+  boxList.map(() => 'gray'),
+);
 
 const GestureGrid = () => {
-  const [nowGrid, setNowGrid] = useState(GRID);
+  const [nowGrid, setNowGrid] = useState(EMPTY_COLOR_GRID);
   const [nowColor, setNowColor] = useState<null | string>(null);
 
   const [colorCounts, setColorCounts] = useState<Record<string, number>>({
@@ -77,15 +80,23 @@ const GestureGrid = () => {
         const newNowGrid = [...nowGrid];
         const newColorCounts = {...colorCounts};
 
-        if (indexX >= 0 && indexX < 5 && indexY >= 0 && indexY < 5) {
+        if (
+          indexX >= 0 &&
+          indexX < MOUNTAIN_GRID[0].length &&
+          indexY >= 0 &&
+          indexY < MOUNTAIN_GRID.length &&
+          MOUNTAIN_GRID[indexY][indexX]
+        ) {
           newNowGrid[indexY][indexX] = nowColor;
           newColorCounts[nowColor] -= 1;
 
           runOnJS(setNowGrid)(newNowGrid);
           runOnJS(setColorCounts)(newColorCounts);
+          sharedValues[nowColor].value = {x: 0, y: 0};
+        } else {
+          sharedValues[nowColor].value = withSpring({x: 0, y: 0});
+          runOnJS(setNowColor)(null);
         }
-        sharedValues[nowColor].value = withSpring({x: 0, y: 0});
-        runOnJS(setNowColor)(null);
       }
     });
 
@@ -100,17 +111,19 @@ const GestureGrid = () => {
       <GestureDetector gesture={pan}>
         <View style={{flex: 1}}>
           <View style={{paddingTop: 100}}>
-            {nowGrid.map((boxList, rowIndex) => (
+            {MOUNTAIN_GRID.map((boxList, rowIndex) => (
               <View key={`row-${rowIndex}`} style={{flexDirection: 'row'}}>
-                {boxList.map((boxColor, colIndex) => (
+                {boxList.map((isBox, colIndex) => (
                   <>
                     <View
                       key={`col-${rowIndex}-${colIndex}`}
                       style={{
                         width: BOX_WIDTH,
                         height: BOX_WIDTH,
-                        borderWidth: 1,
-                        backgroundColor: boxColor,
+                        borderWidth: isBox ? 0.1 : 0,
+                        backgroundColor: isBox
+                          ? nowGrid[rowIndex][colIndex]
+                          : 'transprent',
                       }}
                     />
                   </>

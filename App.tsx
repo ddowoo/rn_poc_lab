@@ -1,13 +1,10 @@
-
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import SkiaCard from './src/screens/skia/SkiaCard';
-
+import VictoryChart from './src/screens/victoryChart';
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-
-      <SkiaCard />
+      <VictoryChart />
     </GestureHandlerRootView>
   );
 };

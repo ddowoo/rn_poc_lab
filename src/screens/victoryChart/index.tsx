@@ -16,7 +16,6 @@ import {
 } from '@shopify/react-native-skia';
 import ToolTip from './components/tooltip.tsx';
 
-
 // x축에 사용할 요일 리스트
 const dayList = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
@@ -31,7 +30,6 @@ const VictoryChart = () => {
   const fontSize = 12;
   // 사용자의 차트 클릭 상태 관리 (x 좌표와 y값을 포함)
   const {state, isActive} = useChartPressState({x: 0, y: {highTmp: 0}});
-
 
   // 커스텀 폰트 로드
   const font = useFont(
@@ -61,8 +59,8 @@ const VictoryChart = () => {
           domain={{y: [-5, 20]}} // 전체 y축 범위
           viewport={{y: [0, 20]}} // 화면에 보이는 y축 범위
           padding={16}
+          // @ts-ignore
           chartPressState={state}
-
           domainPadding={{left: 10, right: 10, top: 10, bottom: 10}}
           xAxis={{
             font,
@@ -108,7 +106,6 @@ const VictoryChart = () => {
                   connectMissingData={false}
                   points={points.value}
                   color="green"
-
                   strokeWidth={2}>
                   <DashPathEffect intervals={[2, 3]} />
                 </Line>

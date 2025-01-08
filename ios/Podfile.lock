@@ -1249,7 +1249,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-skia (1.7.6):
+  - react-native-skia (1.8.2):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1585,7 +1585,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.16.5):
+  - RNReanimated (3.16.6):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1605,10 +1605,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.16.5)
-    - RNReanimated/worklets (= 3.16.5)
+    - RNReanimated/reanimated (= 3.16.6)
+    - RNReanimated/worklets (= 3.16.6)
     - Yoga
-  - RNReanimated/reanimated (3.16.5):
+  - RNReanimated/reanimated (3.16.6):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1628,9 +1628,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 3.16.5)
+    - RNReanimated/reanimated/apple (= 3.16.6)
     - Yoga
-  - RNReanimated/reanimated/apple (3.16.5):
+  - RNReanimated/reanimated/apple (3.16.6):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1651,7 +1651,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated/worklets (3.16.5):
+  - RNReanimated/worklets (3.16.6):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1938,8 +1938,7 @@ SPEC CHECKSUMS:
   React-logger: ae95f0effa7e1791bd6f7283caddca323d4fbc1e
   React-Mapbuffer: 7eb5d69e1154e7743487ef0c8d7261e5b59afb32
   React-microtasksnativemodule: 01dd998649ff5f8814846b7eee84c4d57f5d3671
-  react-native-skia: 1ecbb580a78147a6fb71169a96b87a0c14f5448f
-
+  react-native-skia: d9165d6bf4de0ea3d63fe52f5f5915f5929ea1a8
   react-native-unistyles: ef67e36858d04ace8f76657016ee9dc1df8b65ca
   React-nativeconfig: f7ab6c152e780b99a8c17448f2d99cf5f69a2311
   React-NativeModulesApple: 9aeb901b9bfcc9235e912445fb3cf4780a99baf4
@@ -1971,7 +1970,7 @@ SPEC CHECKSUMS:
   rive-react-native: 77b3dc1cea856258a87cf22b9c6c42626bf0c6e3
   RiveRuntime: f8bd7015494fa137fa1165e949bb86a4a6958e75
   RNGestureHandler: e1dcb274c17ca0680a04d7ff357e35e37c384185
-  RNReanimated: d8d0ab232099005d87384858de082ae021e7387c
+  RNReanimated: ee9a749b8f2ee2a743d2dd7b4ab66f22d63f3bda
   RNSoundPlayer: 66e056f53b9e74d569b5a7c014bdb496c11d1268
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: fcc198acd4a55599b3468cfb6ebc526baff5f06e

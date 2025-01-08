@@ -1,5 +1,5 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import Rive, {RiveRef} from 'rive-react-native';
+import Rive, {LoopMode, RiveRef} from 'rive-react-native';
 import {useEffect, useRef} from 'react';
 
 const RiveScreen = () => {
@@ -7,16 +7,17 @@ const RiveScreen = () => {
 
   // 첫 플레이를 안하면 에셋이 바로 다 모여버려서
   useEffect(() => {
-    // riveRef.current?.play();
-    riveRef.current?.pause();
+    riveRef.current?.play('idle', LoopMode.OneShot);
+
+    // riveRef.current?.pause();
   }, []);
 
   const handlePlay = () => {
-    riveRef.current?.play();
+    // riveRef.current?.play();
   };
 
   const handlePause = () => {
-    riveRef.current?.pause();
+    // riveRef.current?.pause();
   };
 
   return (
@@ -29,6 +30,10 @@ const RiveScreen = () => {
           stateMachineName="avatar"
           style={{width: 300, height: 300}}
           autoplay={false}
+          onStateChanged={(stateMachineName, stateName) => {
+            console.log('stateMachineName : ', stateMachineName);
+            console.log('stateName : ', stateName);
+          }}
         />
       </View>
       <View style={{flexDirection: 'row', marginTop: 24}}>

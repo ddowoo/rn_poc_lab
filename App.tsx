@@ -1,10 +1,11 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import GestureGrid from './src/screens/gestureGrid';
+import SkiaCard from './src/screens/skia/SkiaCard';
+
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <GestureGrid />
+      <SkiaCard />
     </GestureHandlerRootView>
   );
 };

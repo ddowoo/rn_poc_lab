@@ -1,3 +1,4 @@
+
 import {Text, View} from 'react-native';
 import {Area, Bar, CartesianChart, Line, Scatter} from 'victory-native';
 import {
@@ -74,6 +75,7 @@ const VictoryChart = () => {
                   connectMissingData={false}
                   points={points.value}
                   color="green"
+
                   strokeWidth={2}>
                   <DashPathEffect intervals={[2, 3]} />
                 </Line>

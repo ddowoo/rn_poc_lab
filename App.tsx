@@ -1,10 +1,10 @@
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import RiveScreen from './src/screens/rive';
+import GestureGrid from './src/screens/gestureGrid';
 
 const App = () => {
   return (
     <GestureHandlerRootView>
-      <RiveScreen />
+      <GestureGrid />
     </GestureHandlerRootView>
   );
 };

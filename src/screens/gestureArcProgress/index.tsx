@@ -144,6 +144,10 @@ const GestureArcSlider = () => {
     return <></>;
   }
 
+  if (skiaBackgroundPath === null) {
+    return <></>;
+  }
+
   return (
     <GestureHandlerRootView>
       <GestureDetector gesture={gesture}>

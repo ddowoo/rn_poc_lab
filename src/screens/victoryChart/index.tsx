@@ -1,4 +1,5 @@
 
+
 import {Text, View} from 'react-native';
 import {Area, Bar, CartesianChart, Line, Scatter} from 'victory-native';
 import {
@@ -76,6 +77,7 @@ const VictoryChart = () => {
                   points={points.value}
                   color="green"
 
+
                   strokeWidth={2}>
                   <DashPathEffect intervals={[2, 3]} />
                 </Line>
@@ -104,6 +106,7 @@ const VictoryChart = () => {
                   style="fill"
                   color="white"
                 />
+
                 {/* Area 그래프 */}
                 <Area
                   points={points.value}

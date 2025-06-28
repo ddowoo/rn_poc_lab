@@ -1,13 +1,30 @@
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import RiveScreen from './src/screens/rive';
+import {View} from 'react-native';
+import SkiaDotList from './src/screens/skia/SkiaDotList';
 
 const App = () => {
+  // return (
+  //   <View
+  //     style={{
+  //       flex: 1,
+  //       alignItems: 'center',
+  //       justifyContent: 'center',
+  //     }}>
+  //     <Text>기본 테스트</Text>
+  //   </View>
+  // );
+
   return (
-    <GestureHandlerRootView>
+    <View style={{flex: 1}}>
+      {/*<GestureHandlerRootView>*/}
       {/*<Haptic />*/}
       {/*<VictoryChart />*/}
-      <RiveScreen />
-    </GestureHandlerRootView>
+      {/*<RiveScreen />*/}
+      {/*<ScrollViewWebView />*/}
+      {/*<SkiaTimer />*/}
+      {/*</GestureHandlerRootView>*/}
+      {/*<SkiaGradientClock />*/}
+      <SkiaDotList />
+    </View>
   );
 };
 

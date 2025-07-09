@@ -19,26 +19,34 @@ import AsmpMix from '../screens/asmpMix';
 const Stack = createStackNavigator();
 
 export const POC_SCREENS = [
-  {name: 'CutMovie', component: CutMovie},
-  {name: 'NeonSignLogo', component: NeonSignLogo},
-  {name: 'SkiaGradientClock', component: SkiaGradientClock},
-  {name: 'SkiaDotList', component: SkiaDotList},
-  {name: 'SkiaCard', component: SkiaCard},
-  {name: 'SkiaTimer', component: SkiaTimer},
-  {name: 'SkiaShader', component: SkiaShader},
-  {name: 'ScrollViewWebView', component: ScrollViewWebView},
-  {name: 'RiveScreen', component: RiveScreen},
-  {name: 'Haptic', component: Haptic},
-  {name: 'GestureGrid', component: GestureGrid},
-  {name: 'VictoryChart', component: VictoryChart},
-  {name: 'GestureArcProgress', component: GestureArcProgress},
-  {name: 'AsmpMix', component: AsmpMix},
+  {name: 'CutMovie', component: CutMovie, label: '동영상 자르기'},
+  {name: 'NeonSignLogo', component: NeonSignLogo, label: '네온사인 로고'},
+  {
+    name: 'SkiaGradientClock',
+    component: SkiaGradientClock,
+    label: '스키아 그라데이션 시계',
+  },
+  {name: 'SkiaDotList', component: SkiaDotList, label: '스키아 점 리스트'},
+  {name: 'SkiaCard', component: SkiaCard, label: '스키아 카드'},
+  {
+    name: 'ScrollViewWebView',
+    component: ScrollViewWebView,
+    label: '스크롤뷰 웹뷰',
+  },
+  {name: 'RiveScreen', component: RiveScreen, label: 'Rive 애니메이션'},
+  {name: 'Haptic', component: Haptic, label: '햅틱'},
+  {name: 'GestureGrid', component: GestureGrid, label: '제스처 그리드'},
+  {name: 'VictoryChart', component: VictoryChart, label: '차트'},
+  {
+    name: 'GestureArcProgress',
+    component: GestureArcProgress,
+    label: '아크 프로그레스',
+  },
+  {name: 'AsmpMix', component: AsmpMix, label: 'ASMP 믹스'},
 ];
 
 const AppNavigator = () => (
-  <Stack.Navigator
-    initialRouteName={'CutMovie'}
-    screenOptions={{headerShown: false}}>
+  <Stack.Navigator screenOptions={{headerShown: false}}>
     <Stack.Screen
       name="Main"
       component={MainScreen}

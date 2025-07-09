@@ -12,7 +12,7 @@ const MainScreen = ({navigation}: MainScreenProps) => (
     {POC_SCREENS.map(screen => (
       <View key={screen.name} style={styles.buttonWrapper}>
         <Button
-          title={screen.name}
+          title={screen.label}
           onPress={() => navigation.navigate(screen.name)}
         />
       </View>

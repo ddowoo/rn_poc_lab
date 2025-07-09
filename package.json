@@ -13,8 +13,10 @@
     "@react-navigation/native": "^7.1.14",
     "@react-navigation/stack": "^7.4.2",
     "@shopify/react-native-skia": "^1.7.6",
+    "immer": "^10.1.1",
     "react": "18.3.1",
     "react-native": "0.76.5",
+    "react-native-fast-image": "^8.6.3",
     "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.27.1",
     "react-native-haptic-feedback": "^2.3.3",
@@ -51,6 +53,14 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "codegenConfig": {
+    "name": "NativeVideoControlSpec",
+    "type": "modules",
+    "jsSrcsDir": "specs",
+    "android": {
+      "javaPackageName": "com.nativevideocontrol"
+    }
   },
   "packageManager": "yarn@3.6.4+sha512.e70835d4d6d62c07be76b3c1529cb640c7443f0fe434ef4b6478a5a399218cbaf1511b396b3c56eb03bc86424cff2320f6167ad2fde273aa0df6e60b7754029f"
 }

@@ -36,7 +36,9 @@ export const POC_SCREENS = [
 ];
 
 const AppNavigator = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    initialRouteName={'CutMovie'}
+    screenOptions={{headerShown: false}}>
     <Stack.Screen
       name="Main"
       component={MainScreen}

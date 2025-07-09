@@ -6,7 +6,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 const App = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
+      <NavigationContainer >
         <AppNavigator />
       </NavigationContainer>
     </SafeAreaProvider>

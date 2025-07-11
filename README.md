@@ -23,6 +23,7 @@
 | 차트                   | victory-native, skia 차트                       |
 | 아크 프로그레스        | 원형/아크 형태 진행바                           |
 | ASMP 믹스              | 여러 사운드 믹스/재생                           |
+| Wallet 연동            | Apple/Google Wallet 패스 추가 및 관리           |
 
 > 각 POC별 상세 구현/코드는 `src/screens/` 하위 폴더 참고
 

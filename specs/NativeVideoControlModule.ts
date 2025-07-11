@@ -1,5 +1,4 @@
-import type {TurboModule} from 'react-native';
-import {TurboModuleRegistry} from 'react-native';
+import {Platform, TurboModule, TurboModuleRegistry} from 'react-native';
 
 export type Thumbnail = {
   uri: string;
@@ -10,4 +9,10 @@ export interface Spec extends TurboModule {
   getThumbnailList(): Promise<Thumbnail[]>;
 }
 
-export default TurboModuleRegistry.getEnforcing<Spec>('NativeVideoControl');
+export default Platform.OS === 'android'
+  ? TurboModuleRegistry.getEnforcing<Spec>('NativeVideoControl')
+  : {
+      getThumbnailList: async () => {
+        return [];
+      },
+    };

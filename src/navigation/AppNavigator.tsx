@@ -2,19 +2,18 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import MainScreen from '../screens/MainScreen';
 import CutMovie from '../screens/CutMovie';
-import NeonSignLogo from '../screens/skia/NeonSignLogo';
-import SkiaGradientClock from '../screens/skia/SkiaGradientClock';
-import SkiaDotList from '../screens/skia/SkiaDotList';
-import SkiaCard from '../screens/skia/SkiaCard';
-import SkiaTimer from '../screens/skia/SkiaTimer';
-import SkiaShader from '../screens/skia/SkiaShader';
+import NeonSignLogo from '../screens/Skia/NeonSignLogo';
+import SkiaGradientClock from '../screens/Skia/SkiaGradientClock';
+import SkiaDotList from '../screens/Skia/SkiaDotList';
+import SkiaCard from '../screens/Skia/SkiaCard';
 import ScrollViewWebView from '../screens/ScrollViewWebView';
-import RiveScreen from '../screens/rive';
-import Haptic from '../screens/haptic';
-import GestureGrid from '../screens/gestureGrid';
-import VictoryChart from '../screens/victoryChart';
-import GestureArcProgress from '../screens/gestureArcProgress';
-import AsmpMix from '../screens/asmpMix';
+import RiveScreen from '../screens/Rive';
+import Haptic from '../screens/Haptic';
+import GestureGrid from '../screens/GestureGrid';
+import VictoryChart from '../screens/VictoryChart';
+import GestureArcProgress from '../screens/GestureArcProgress';
+import AsmpMix from '../screens/AsmpMix';
+import RnWallet from '../screens/RnWallet';
 
 const Stack = createStackNavigator();
 
@@ -43,6 +42,7 @@ export const POC_SCREENS = [
     label: '아크 프로그레스',
   },
   {name: 'AsmpMix', component: AsmpMix, label: 'ASMP 믹스'},
+  {name: 'RnWallet', component: RnWallet, label: 'Wallet 연동'},
 ];
 
 const AppNavigator = () => (

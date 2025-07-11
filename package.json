@@ -27,6 +27,7 @@
     "react-native-sound-player": "^0.14.3",
     "react-native-unistyles": "^2.20.0",
     "react-native-video": "^6.15.0",
+    "react-native-wallet-manager": "^1.1.1",
     "react-native-webview": "^13.14.1",
     "rive-react-native": "^9.1.0",
     "victory-native": "^41.14.0"

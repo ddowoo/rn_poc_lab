@@ -8092,6 +8092,7 @@ __metadata:
     react-native-sound-player: ^0.14.3
     react-native-unistyles: ^2.20.0
     react-native-video: ^6.15.0
+    react-native-wallet-manager: ^1.1.1
     react-native-webview: ^13.14.1
     react-test-renderer: 18.3.1
     rive-react-native: ^9.1.0
@@ -8460,6 +8461,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: c369af44b79790cbbcbabf4bd9d3e1e26a63ec00abc040caa1fb48f608bb066ef22af9fae0321eb99dc8875d861b568f97057e8609f0885bd52216f990ae6594
+  languageName: node
+  linkType: hard
+
+"react-native-wallet-manager@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "react-native-wallet-manager@npm:1.1.1"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 81b131021c20cc1b806caaaeb8fe5a82458281a23ab4c88079f66629888e0dbbc1de27eb5e2286d526ab475bd8d500f42da107dd9455f943ba29e0b684ad2e02
   languageName: node
   linkType: hard
 

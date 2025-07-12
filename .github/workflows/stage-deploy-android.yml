@@ -38,6 +38,6 @@ jobs:
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 --decode > google-credentials.json
 
       - name: Execute Fastlane command
-        run: cd android && bundle exec fastlane android_stage_deploy_to_firebase_app_distribution
+        run: cd android && fastlane android_stage_deploy_to_firebase_app_distribution
         env:
           STAGE_GOOGLE_APPLICATION_CREDENTIALS: ../google-credentials.json

@@ -32,10 +32,12 @@ jobs:
         run: yarn install
 
       - name: Generate Codegen Artifacts
-        run: cd android && ./gradlew generateCodegenArtifactsFromSchema && cd ..
+        run: cd android && ./gradlew generateCodegenArtifactsFromSchema
 
-      - name: Install Fastlane
-        run: cd android && bundle install && cd ..
+      - name: Decode Google Credentials
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 --decode > google-credentials.json
 
       - name: Execute Fastlane command
-        run: cd android && fastlane android_stage_deploy_to_firebase_app_distribution && cd ..
+        run: cd android && bundle exec fastlane android_stage_deploy_to_firebase_app_distribution
+        env:
+          STAGE_GOOGLE_APPLICATION_CREDENTIALS: ../google-credentials.json

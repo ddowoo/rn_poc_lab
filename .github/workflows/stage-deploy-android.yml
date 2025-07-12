@@ -40,4 +40,5 @@ jobs:
       - name: Execute Fastlane command
         run: cd android && fastlane android_stage_deploy_to_firebase_app_distribution
         env:
+          FASTLANE_SKIP_UPDATE_CHECK: true
           STAGE_GOOGLE_APPLICATION_CREDENTIALS: ../google-credentials.json

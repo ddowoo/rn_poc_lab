@@ -73,4 +73,4 @@ yarn-error.log
 !.yarn/sdks
 !.yarn/versions
 
-stage-rn-poc-lab-89ac2e9a90a1.json
+app_distribution/stage-rn-poc-lab-*.json

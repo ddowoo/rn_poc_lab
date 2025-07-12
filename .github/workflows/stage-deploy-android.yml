@@ -21,13 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'yarn' # Yarn Berry도 지원됨
-
-      - name: Enable Corepack and setup Yarn 3.6.4
-        run: |
-          corepack enable
-          corepack prepare yarn@3.6.4 --activate
-          yarn --version  # 디버깅용
+          cache: 'yarn'
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -38,7 +32,7 @@ jobs:
         run: yarn install
 
       - name: Generate Codegen Artifacts
-        run: yarn android:codegen
+        run: cd android && ./gradlew generateCodegenArtifactsFromSchema && cd ..
 
       - name: Install Fastlane
         run: cd android && bundle install && cd ..

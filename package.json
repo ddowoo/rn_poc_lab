@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
+    "stage": "bash src/scripts/push-stage.sh",
     "android:stage:deploy": "cd android && bundle exec fastlane android_stage_deploy_to_firebase_app_distribution --verbose && cd .."
   },
   "dependencies": {

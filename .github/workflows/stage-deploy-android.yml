@@ -1,0 +1,41 @@
+name: stage-deploy-android.yml
+
+
+on:
+  push:
+    branches:
+      - stage
+    tags:
+      - 'release/v*'
+      - 'release/android/v*'
+
+jobs:
+  qa-stage-deploy-android:
+    name: stage qa deploy android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - name: Install Node
+        uses: inflearn/github-action/setup-node@v1
+        with:
+          node-version: 18
+          package-manager: yarn
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+
+      - name: Generate Codegen Artifacts
+        run: yarn android:codegen
+
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+
+      - name: Execute Fastlane command
+        run: cd android && fastlane android_stage_deploy_to_firebase_app_distribution&& cd ..
+
+
+

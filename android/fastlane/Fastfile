@@ -1,0 +1,66 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+
+  def get_changelog_from_git_commits()
+    log = changelog_from_git_commits(
+      commits_count: 10,
+      pretty: "- [%ad]: %s",
+      date_format: "format:%Y.%m.%d %H:%M",
+      match_lightweight_tag: false,
+    )
+
+    log
+  end
+
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(task: "clean assembleRelease")
+    crashlytics
+
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+   desc "firebase app distribution에 android stage 앱 배포하는 lane"
+   lane :android_stage_deploy_to_firebase_app_distribution do
+     gradle(
+         task: "assemble",
+         flavor: "stage",
+         build_type: "release"
+     )
+     release = firebase_app_distribution(
+         app: ENV["STAGE_FIREBASE_APP_ID"],
+         groups: ENV["STAGE_FIREBASE_TESTER_GROUP"],
+         service_credentials_file: ENV["STAGE_GOOGLE_APPLICATION_CREDENTIALS"],
+         android_artifact_type: "APK",
+         release_notes: get_changelog_from_git_commits()
+     )
+   end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
+end

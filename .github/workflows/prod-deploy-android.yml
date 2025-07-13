@@ -1,0 +1,47 @@
+name: stage-deploy-android.yml
+
+on:
+  push:
+    branches:
+      - stage
+    tags:
+      - 'release/v*'
+      - 'release/android/v*'
+
+jobs:
+  qa-stage-deploy-android:
+    name: stage qa deploy android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Generate Codegen Artifacts
+        run: cd android && ./gradlew generateCodegenArtifactsFromSchema
+
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+
+      - name: Decode Google Credentials
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 --decode > google-credentials.json
+
+      - name: Execute Fastlane command
+        run: cd android && fastlane android_stage_deploy_to_firebase_app_distribution
+        env:
+          FASTLANE_SKIP_UPDATE_CHECK: true
+          STAGE_GOOGLE_APPLICATION_CREDENTIALS: ../google-credentials.json

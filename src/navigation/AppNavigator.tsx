@@ -14,6 +14,7 @@ import VictoryChart from '../screens/VictoryChart';
 import GestureArcProgress from '../screens/GestureArcProgress';
 import AsmpMix from '../screens/AsmpMix';
 import RnWallet from '../screens/RnWallet';
+import HeartNeonSign from '../screens/Skia/HeartNeonSign';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ export const POC_SCREENS = [
     name: 'ScrollViewWebView',
     component: ScrollViewWebView,
     label: '스크롤뷰 웹뷰',
+  },
+  {
+    name: 'SkiaHeartNeonSign',
+    component: HeartNeonSign,
+    label: '스키아 하트 네온사인',
   },
   {name: 'RiveScreen', component: RiveScreen, label: 'Rive 애니메이션'},
   {name: 'Haptic', component: Haptic, label: '햅틱'},

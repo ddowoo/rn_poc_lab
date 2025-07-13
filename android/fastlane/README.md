@@ -39,6 +39,14 @@ Submit a new Beta Build to Crashlytics Beta
 
 firebase app distribution에 android stage 앱 배포하는 lane
 
+### android android_prod_deploy_to_play_store_distribution
+
+```sh
+[bundle exec] fastlane android android_prod_deploy_to_play_store_distribution
+```
+
+play store에 android prod 앱 배포하는 lane
+
 ### android deploy
 
 ```sh

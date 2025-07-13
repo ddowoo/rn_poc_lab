@@ -34,6 +34,9 @@ jobs:
       - name: Generate Codegen Artifacts
         run: cd android && ./gradlew generateCodegenArtifactsFromSchema
 
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+
       - name: Decode Google Credentials
         run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" | base64 --decode > google-credentials.json
 

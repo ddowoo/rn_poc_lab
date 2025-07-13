@@ -58,6 +58,21 @@ platform :android do
      )
    end
 
+    desc "play store에 android prod 앱 배포하는 lane"
+       lane :android_prod_deploy_to_play_store_distribution do
+         gradle(
+              task: "bundle",
+              flavor: "production",
+              build_type: "release",
+         )
+         upload_to_play_store(
+           package_name: "com.poc_lab",
+           track: 'internal',
+           json_key: ENV["PROD_GOOGLE_APPLICATION_CREDENTIALS"],
+           skip_upload_apk: true,
+         )
+    end
+
   desc "Deploy a new version to the Google Play"
   lane :deploy do
     gradle(task: "clean assembleRelease")

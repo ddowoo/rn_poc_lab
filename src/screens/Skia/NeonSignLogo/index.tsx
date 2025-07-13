@@ -21,16 +21,13 @@ const path = Skia.Path.MakeFromSVGString(
 
 const NeonSignLogo = () => {
   const {width, height} = useWindowDimensions();
-  const logoSvg = useSVG(require('./logo.svg'));
+  const logoSvg = useSVG(require('../../../asset/svg/logo.svg'));
   const font = matchFont({
     fontFamily: 'serif',
     fontSize: 60,
     fontStyle: 'italic',
     fontWeight: 'bold',
   });
-
-
-
 
   const textWidth = font.getMetrics()?.bounds?.width ?? 0;
 

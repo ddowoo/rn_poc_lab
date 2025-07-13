@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "502177120891",
+    "project_id": "stage-rn-poc-lab",
+    "storage_bucket": "stage-rn-poc-lab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502177120891:android:278e04048c99c6e71c18de",
+        "android_client_info": {
+          "package_name": "com.stage.poc_lab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApFznF5PtvVX8ux7cwUFH6isS8eAloSXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

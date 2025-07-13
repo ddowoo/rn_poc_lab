@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367247389517",
+    "project_id": "dev-rn-poc-lab",
+    "storage_bucket": "dev-rn-poc-lab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367247389517:android:608a98161317e4f294bd04",
+        "android_client_info": {
+          "package_name": "com.dev.poc_lab"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj8VtViIJeB9Ap08mghGoD3uotX9Er7qU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

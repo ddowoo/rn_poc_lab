@@ -15,6 +15,7 @@ import GestureArcProgress from '../screens/GestureArcProgress';
 import AsmpMix from '../screens/AsmpMix';
 import RnWallet from '../screens/RnWallet';
 import HeartNeonSign from '../screens/Skia/HeartNeonSign';
+import MemoryLeakScreen from '../screens/MemoryLeakScreen';
 
 const Stack = createStackNavigator();
 
@@ -49,6 +50,7 @@ export const POC_SCREENS = [
   },
   {name: 'AsmpMix', component: AsmpMix, label: 'ASMP 믹스'},
   {name: 'RnWallet', component: RnWallet, label: 'Wallet 연동'},
+  { name: 'MemoryLeak', component: MemoryLeakScreen, label: '메모리 누수 테스트' },
 ];
 
 const AppNavigator = () => (

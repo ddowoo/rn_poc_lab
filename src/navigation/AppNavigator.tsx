@@ -58,6 +58,7 @@ export const POC_SCREENS = [
 ];
 
 const AppNavigator = () => (
+
     <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'GesturePlayer'}>
         <Stack.Screen
             name="Main"

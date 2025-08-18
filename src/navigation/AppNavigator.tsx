@@ -17,6 +17,7 @@ import RnWallet from '../screens/RnWallet';
 import HeartNeonSign from '../screens/Skia/HeartNeonSign';
 import MemoryLeakScreen from '../screens/MemoryLeakScreen';
 import LocalizeScreen from '../screens/Localize';
+import GesturePlayer from "../screens/gesturePlayer";
 
 const Stack = createStackNavigator();
 
@@ -53,10 +54,12 @@ export const POC_SCREENS = [
     {name: 'RnWallet', component: RnWallet, label: 'Wallet 연동'},
     {name: 'MemoryLeak', component: MemoryLeakScreen, label: '메모리 누수 테스트'},
     {name: 'Localize', component: LocalizeScreen, label: '다국어'},
+    {name: 'GesturePlayer', component: GesturePlayer, label: '제스쳐 플레이이어'},
 ];
 
 const AppNavigator = () => (
-    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'Localize'}>
+
+    <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName={'GesturePlayer'}>
         <Stack.Screen
             name="Main"
             component={MainScreen}

@@ -7095,6 +7095,11 @@ react-native-localize@^3.5.1:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-3.5.1.tgz#d74dba8d3e7763031a731b2c96cc225c9ea81ff2"
   integrity sha512-AX2soRR1/BCK2GvzjIpH+0EQaR2acfojFtjAstnYBFPR7ThIQx5Xb+OlqpzYxcYTPDxIcU5i4/yMa23Agy7p8g==
 
+react-native-orientation-locker@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-orientation-locker/-/react-native-orientation-locker-1.7.0.tgz#47ef2b9c24618e40f0a521f184b51270e576b028"
+  integrity sha512-2PhG4UyRJktb3KCTISStuu8/q+Q3q3oPesGg9DhdY0b6Cu/ZzxkCvkbJte2TPWRYkS0JpClimvqVaonulGvDrA==
+
 react-native-reanimated@^3.16.5:
   version "3.18.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.18.0.tgz#0a246eab38a9e807887fe561a2868cfe85351f3c"

@@ -21,14 +21,17 @@ const GesturePlayerScreen = () => {
     const {width: windowWidth, height: windowHeight} = useWindowDimensions();
     const {top} = useSafeAreaInsets();
     const videoRef = useRef<VideoRef>(null);
-    const videoSource = require('../../asset/video/bigBunny.mp4');
-
+    const videoSource = require('../../asset/video/bigBUnny.mp4')
     // Reanimated Values
     const videoY = useSharedValue(0); // 비디오 Y축 이동
+    const videoX = useSharedValue(0); // 비디오 Y축 이동
+    const savedVideoX = useSharedValue(0); // 줌인 중 팬 제스쳐를 위한 X축
+    const savedVideoY = useSharedValue(0); //  줌인 중 팬 제스쳐를 위한 Y축
     const scale = useSharedValue(1); // 비디오 스케일
     const savedScale = useSharedValue(1); // 핀치 제스처를 위한 저장된 스케일
     const isFullScreenShared = useSharedValue(false); // 전체 화면 상태
     const windowWidthShared = useSharedValue(windowWidth); // 윈도우 너비
+    const isZoomed = useSharedValue(false); // 줌인 여부
 
     const [isFullScreen, _setIsFullScreen] = useState(false);
     const setIsFullScreen = (value: boolean) => {
@@ -95,30 +98,59 @@ const GesturePlayerScreen = () => {
     // 줌인아웃
     const pinchGesture = Gesture.Pinch()
         .onUpdate((e) => {
-            scale.value = savedScale.value * e.scale;
+            if (e.numberOfPointers === 2) {
+                scale.value = Math.max(Math.min(savedScale.value * e.scale, 8), 1);
+            }
         })
         .onEnd(() => {
-            savedScale.value = scale.value;
+            // 1.4이하는 줌아웃으로 간주
+            const isZoomedNow = scale.value > 1.4;
+            isZoomed.value = isZoomedNow;
+            if (isZoomedNow) {
+                savedScale.value = scale.value;
+
+            } else {
+                scale.value = withTiming(1, {duration: ANIMATION_DURATION_MS});
+                videoY.value = withTiming(0, {duration: ANIMATION_DURATION_MS});
+                videoX.value = withTiming(0, {duration: ANIMATION_DURATION_MS});
+            }
         });
 
     // 전체화면 모드
     // TODO : 핀치줌 상태에서 팬제스쳐 전환 작업 추가
     const panGesture = Gesture.Pan()
+        .maxPointers(1)
         .onUpdate((e) => {
-            if (isFullScreenShared.value) {
-                scale.value = Math.max(MIN_SCALE_ON_PAN, Math.max(1, -e.translationY * PAN_SCALE_FACTOR));
-                videoY.value = e.translationY;
+
+
+            if (isZoomed.value) {
+                // 핀치 줌 상태에서 팬 제스처
+                videoY.value = (e.translationY + videoY.value) / savedScale.value;
+                videoX.value = (e.translationX + videoX.value) / savedScale.value;
+
             } else {
-                videoY.value = Math.min(e.translationY, 0); // 위로만 이동 가능
-                scale.value = Math.min(MAX_SCALE_ON_PAN, Math.max(1, -e.translationY * PAN_SCALE_FACTOR));
+                if (isFullScreenShared.value) {
+                    scale.value = Math.max(MIN_SCALE_ON_PAN, Math.max(1, -e.translationY * PAN_SCALE_FACTOR));
+                    videoY.value = e.translationY;
+                } else {
+                    videoY.value = e.translationY;
+                    scale.value = Math.min(MAX_SCALE_ON_PAN, Math.max(1, -e.translationY * PAN_SCALE_FACTOR));
+                }
             }
+
+
         })
-        .onEnd(() => {
-            if (PAN_GESTURE_THRESHOLD <= Math.abs(videoY.value)) {
-                runOnJS(handleFullScreenToggle)();
+        .onEnd((e) => {
+            if (isZoomed.value) {
+                savedVideoX.value = videoX.value;
+                savedVideoY.value = videoY.value;
+            } else {
+                if (PAN_GESTURE_THRESHOLD <= Math.abs(videoY.value)) {
+                    runOnJS(handleFullScreenToggle)();
+                }
+                videoY.value = withTiming(0, {duration: ANIMATION_DURATION_MS});
+                scale.value = withTiming(1, {duration: ANIMATION_DURATION_MS});
             }
-            videoY.value = withTiming(0, {duration: ANIMATION_DURATION_MS});
-            scale.value = withTiming(1, {duration: ANIMATION_DURATION_MS});
         });
 
     // 롱 프레스 제스처: 비디오 속도 2배속
@@ -146,12 +178,13 @@ const GesturePlayerScreen = () => {
             runOnJS(handleDoubleTapSeek)(isLeftSide);
         });
 
-    const playerGesture = Gesture.Race(
-        Gesture.Exclusive(doubleTap, singleTap), // 더블 탭이 싱글 탭보다 우선
-        pinchGesture,
-        panGesture,
-        longPressGesture
-    );
+    //
+    const playerGesture =
+        Gesture.Race(
+            Gesture.Exclusive(doubleTap, singleTap), // 더블 탭이 싱글 탭보다 우선
+            panGesture,
+            longPressGesture, pinchGesture
+        )
 
     // MARK: - Animated
     const videoContainerAnimatedStyle = useAnimatedStyle(() => {
@@ -165,7 +198,7 @@ const GesturePlayerScreen = () => {
         return {
             width: withTiming(windowWidth, {duration: ANIMATION_DURATION_MS}),
             height: withTiming(windowWidth * (9 / 16), {duration: ANIMATION_DURATION_MS}),
-            transform: [{scale: scale.value}, {translateY: videoY.value}],
+            transform: [{scale: scale.value}, {translateY: videoY.value}, {translateX: videoX.value}],
         };
     });
 
@@ -173,11 +206,11 @@ const GesturePlayerScreen = () => {
     return (
         <>
             <StatusBar hidden={isFullScreen}/>
-            <GestureDetector gesture={playerGesture}>
-                <View style={[
-                    isFullScreen ? styles.horizontalContainer : styles.container,
-                    {marginTop: isFullScreen ? 0 : top} // 전체 화면일 때는 marginTop 0
-                ]}>
+            <View style={[
+                isFullScreen ? styles.horizontalContainer : styles.container,
+                {marginTop: isFullScreen ? 0 : top} // 전체 화면일 때는 marginTop 0
+            ]}>
+                <GestureDetector gesture={playerGesture}>
                     <Animated.View style={[videoContainerAnimatedStyle]}>
                         {/* 컨트롤러 오버레이 */}
                         {isControlVisible &&
@@ -192,8 +225,9 @@ const GesturePlayerScreen = () => {
                             resizeMode="contain"
                         />
                     </Animated.View>
-                </View>
-            </GestureDetector>
+                </GestureDetector>
+
+            </View>
             {/* 전체 화면이 아닐 때만 추가 정보 표시 */}
             {!isFullScreen && (
                 <View style={styles.bottomContent}>
@@ -208,12 +242,14 @@ const GesturePlayerScreen = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
+        overflow: 'hidden'
     },
     horizontalContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#000',
+        overflow: 'hidden'
     },
     controlOverlay: {
         flex: 1,
@@ -224,6 +260,9 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         zIndex: 100,
+    },
+    videoContainer: {
+        overflow: 'hidden'
     },
     videoPlayer: {
         flex: 1,

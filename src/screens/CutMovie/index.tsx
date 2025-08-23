@@ -24,7 +24,7 @@ const CutMovie = () => {
     const [nowSeconds, setNowSeconds] = useState(0);
     const [nowThumbnailIndex, setNowThumbnailIndex] = useState(0);
 
-    const videoSource = require('../../asset/video/bigBUnny.mp4');
+    const videoSource = require('../../asset/bigBUnny.mp4');
     const videoRef = useRef<VideoRef>(null);
     const {top} = useSafeAreaInsets();
 

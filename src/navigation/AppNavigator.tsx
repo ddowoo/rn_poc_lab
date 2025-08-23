@@ -17,7 +17,7 @@ import RnWallet from '../screens/RnWallet';
 import HeartNeonSign from '../screens/Skia/HeartNeonSign';
 import MemoryLeakScreen from '../screens/MemoryLeakScreen';
 import LocalizeScreen from '../screens/Localize';
-import GesturePlayer from "../screens/gesturePlayer";
+import GesturePlayer from '../screens/GesturePlayer';
 
 const Stack = createStackNavigator();
 
